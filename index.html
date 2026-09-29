@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>KARTIK — Video Editing Academy</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="nav">
+
+    <a class="brand" href="#home">
+      KARTIK
+    </a>
+
+    <button class="menu-btn" id="menuBtn">
+      ☰
+    </button>
+
+    <nav id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#learn">Learn</a>
+      <a href="#levels">Levels</a>
+      <a href="#software">Software</a>
+      <a href="#tools">Tools</a>
+      <a href="#projects">Projects</a>
+    </nav>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <main>
+
+    <section id="home" class="hero">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">
+          KARTIK • VIDEO EDITING ACADEMY
+        </div>
+
+        <h1>
+          Learn Editing.
+          <br>
+          <span>Create Anything.</span>
+        </h1>
+
+        <p>
+          Learn video editing from beginner to professional level.
+          Master cutting, keyframes, masking, VFX, color grading,
+          motion graphics and storytelling.
+        </p>
+
+        <div class="actions">
+
+          <a class="btn primary" href="#learn">
+            Start Learning
+          </a>
+
+          <a class="btn ghost" href="#levels">
+            Explore Levels
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- 3D AREA -->
+
+      <div class="scene">
+
+        <div id="kartik-3d"></div>
+
+        <div class="scene-hint">
+          Drag to rotate • Scroll to zoom
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= LEARNING ================= -->
+
+    <section id="learn" class="section">
+
+      <div class="eyebrow">
+        LEARNING PATH
+      </div>
+
+      <h2>
+        Learn Video Editing
+      </h2>
+
+      <p class="section-intro">
+        Start from the basics and gradually become a professional editor.
+      </p>
+
+
+      <div class="search-row">
+
+        <input
+          id="search"
+          type="text"
+          placeholder="Search keyframes, masking, FPS..."
+        >
+
+        <select id="levelFilter">
+
+          <option value="All">
+            All Levels
+          </option>
+
+          <option value="Beginner">
+            Beginner
+          </option>
+
+          <option value="Intermediate">
+            Intermediate
+          </option>
+
+          <option value="Advanced">
+            Advanced
+          </option>
+
+          <option value="Professional">
+            Professional
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- PROGRESS -->
+
+      <div class="progress-box">
+
+        <div class="progress-top">
+
+          <span>
+            Your Learning Progress
+          </span>
+
+          <strong id="progressText">
+            0 / 0 completed
+          </strong>
+
+        </div>
+
+        <div class="progress">
+
+          <i id="progressBar"></i>
+
+        </div>
+
+      </div>
+
+
+      <!-- LESSON CARDS -->
+
+      <div id="lessons" class="grid"></div>
+
+    </section>
+
+
+    <!-- ================= LEVELS ================= -->
+
+    <section id="levels" class="section alt">
+
+      <div class="eyebrow">
+        FOUR STAGES
+      </div>
+
+      <h2>
+        From Zero To Professional
+      </h2>
+
+      <div class="level-grid">
+
+        <article>
+
+          <b>01</b>
+
+          <h3>
+            Beginner
+          </h3>
+
+          <p>
+            Learn timeline editing, cutting, trimming,
+            FPS, resolution, audio, text and exporting.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <b>02</b>
+
+          <h3>
+            Intermediate
+          </h3>
+
+          <p>
+            Learn keyframes, velocity, masking,
+            transitions, color and sound design.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <b>03</b>
+
+          <h3>
+            Advanced
+          </h3>
+
+          <p>
+            Learn tracking, compositing, VFX,
+            advanced grading and motion graphics.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <b>04</b>
+
+          <h3>
+            Professional
+          </h3>
+
+          <p>
+            Learn storytelling, retention,
+            YouTube workflow and client delivery.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SOFTWARE ================= -->
+
+    <section id="software" class="section">
+
+      <div class="eyebrow">
+        SOFTWARE
+      </div>
+
+      <h2>
+        Choose Your Editor
+      </h2>
+
+      <div class="software-grid">
+
+        <article>
+
+          <div class="card-icon">
+            C
+          </div>
+
+          <h3>
+            CapCut
+          </h3>
+
+          <p>
+            Fast editing, captions, effects
+            and short-form workflow.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div class="card-icon">
+            A
+          </div>
+
+          <h3>
+            Alight Motion
+          </h3>
+
+          <p>
+            Keyframes, graphs, masks
+            and mobile motion graphics.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div class="card-icon">
+            D
+          </div>
+
+          <h3>
+            DaVinci Resolve
+          </h3>
+
+          <p>
+            Editing, professional color,
+            Fusion and Fairlight.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div class="card-icon">
+            P
+          </div>
+
+          <h3>
+            Premiere Pro
+          </h3>
+
+          <p>
+            Professional timeline editing,
+            audio and production workflow.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div class="card-icon">
+            AE
+          </div>
+
+          <h3>
+            After Effects
+          </h3>
+
+          <p>
+            Motion graphics, compositing,
+            tracking and VFX.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= TOOLS ================= -->
+
+    <section id="tools" class="section alt">
+
+      <div class="eyebrow">
+        TOOLS & REFERENCES
+      </div>
+
+      <h2>
+        Quick Editing References
+      </h2>
+
+
+      <div class="resource-grid">
+
+        <article>
+
+          <h3>
+            🎞️ FPS
+          </h3>
+
+          <p>
+            24 FPS is common for cinematic motion.
+            30 FPS is common for general video.
+            60 FPS gives smoother motion.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <h3>
+            🖥️ Resolution
+          </h3>
+
+          <p>
+            720p, 1080p, 1440p and 4K
+            describe different video resolutions.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <h3>
+            📱 Aspect Ratio
+          </h3>
+
+          <p>
+            16:9 is common for landscape video.
+            9:16 is common for Shorts and Reels.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <h3>
+            📦 Export
+          </h3>
+
+          <p>
+            Check resolution, frame rate,
+            codec, bitrate and audio before export.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects" class="section">
+
+      <div class="eyebrow">
+        PRACTICE
+      </div>
+
+      <h2>
+        Projects To Build Your Skills
+      </h2>
+
+
+      <div class="project-grid">
+
+        <article>
+
+          <span>
+            BEGINNER
+          </span>
+
+          <h3>
+            Music Montage
+          </h3>
+
+          <p>
+            Cut multiple clips to music.
+            Practice timing and clean cuts.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            INTERMEDIATE
+          </span>
+
+          <h3>
+            Beat Sync Edit
+          </h3>
+
+          <p>
+            Use keyframes, velocity and
+            transitions to match a song.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            ADVANCED
+          </span>
+
+          <h3>
+            Tracking VFX
+          </h3>
+
+          <p>
+            Track a moving object and
+            attach an effect to it.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            PROFESSIONAL
+          </span>
+
+          <h3>
+            Cinematic Short
+          </h3>
+
+          <p>
+            Plan, edit, color grade,
+            sound design and export a short film.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= LESSON MODAL ================= -->
+
+  <div id="lessonModal" class="lesson-modal">
+
+    <div class="lesson-content">
+
+      <button
+        id="closeLesson"
+        class="close-btn">
+        ×
+      </button>
+
+
+      <div
+        id="lessonLevel"
+        class="eyebrow">
+      </div>
+
+
+      <h2 id="lessonTitle">
+      </h2>
+
+
+      <p id="lessonDescription">
+      </p>
+
+
+      <div class="lesson-block">
+
+        <h3>
+          📚 What You Will Learn
+        </h3>
+
+        <p id="lessonLearn">
+        </p>
+
+      </div>
+
+
+      <div class="lesson-block">
+
+        <h3>
+          💡 Example
+        </h3>
+
+        <p id="lessonExample">
+        </p>
+
+      </div>
+
+
+      <div class="lesson-block">
+
+        <h3>
+          🎯 Practice Task
+        </h3>
+
+        <p id="lessonPractice">
+        </p>
+
+      </div>
+
+
+      <button
+        id="completeLesson"
+        class="btn primary">
+        ✓ Complete Lesson
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <h2>
+      KARTIK
+    </h2>
+
+    <p>
+      Learn. Edit. Create.
+    </p>
+
+    <small>
+      © 2026 KARTIK Video Editing Academy
+    </small>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script
+    type="module"
+    src="script.js">
+  </script>
+
+</body>
+</html>
+</footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

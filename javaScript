@@ -1,0 +1,129 @@
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+import { FontLoader } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/FontLoader.js";
+import { TextGeometry } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/geometries/TextGeometry.js";/* =====================================================
+   THREE.JS
+===================================================== */
+
+import * as THREE from
+"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+
+import { FontLoader } from
+"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/FontLoader.js";
+
+import { TextGeometry } from
+"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/geometries/TextGeometry.js";
+
+
+/* =====================================================
+   LESSON DATABASE
+===================================================== */
+
+const lessons = [
+
+  {
+    level:"Beginner",
+    title:"What is Video Editing?",
+    description:"Understand the complete editing process.",
+    learn:"Video editing is the process of arranging video, audio, graphics and effects to create a finished video.",
+    example:"A music edit can contain clips, music, transitions, text and color correction.",
+    practice:"Take five short clips and arrange them into a 20-second video."
+  },
+
+  {
+    level:"Beginner",
+    title:"Timeline Basics",
+    description:"Learn tracks, clips, playhead and timeline.",
+    learn:"The timeline is where you arrange video and audio. Tracks hold clips while the playhead shows your current position.",
+    example:"Put your video on V1 and music on A1, then move the playhead to inspect different moments.",
+    practice:"Create a 30-second timeline with three video clips and one music track."
+  },
+
+  {
+    level:"Beginner",
+    title:"Cutting & Trimming",
+    description:"Learn clean cuts and clip arrangement.",
+    learn:"Cutting removes unwanted parts while trimming changes the beginning or ending of a clip.",
+    example:"Remove a boring two-second section from the middle of a clip.",
+    practice:"Create a 15-second montage using only the best moments from three clips."
+  },
+
+  {
+    level:"Beginner",
+    title:"FPS",
+    description:"Understand 24, 30 and 60 FPS.",
+    learn:"FPS means frames per second. It describes how many individual frames are displayed every second.",
+    example:"60 FPS can make fast movement appear smoother than 24 FPS.",
+    practice:"Create a project and compare how the same movement looks at different frame rates."
+  },
+
+  {
+    level:"Beginner",
+    title:"Resolution",
+    description:"Learn 720p, 1080p, 1440p and 4K.",
+    learn:"Resolution describes the number of pixels used to display a video.",
+    example:"1920×1080 is commonly called 1080p.",
+    practice:"Create a 1080p project and export a short test video."
+  },
+
+  {
+    level:"Beginner",
+    title:"Aspect Ratio",
+    description:"Learn 16:9, 9:16 and 1:1.",
+    learn:"Aspect ratio describes the shape of the video frame.",
+    example:"16:9 is commonly used for landscape videos while 9:16 is commonly used for Shorts and Reels.",
+    practice:"Create the same short edit in both 16:9 and 9:16."
+  },
+
+  {
+    level:"Beginner",
+    title:"Audio Basics",
+    description:"Learn music, dialogue and sound effects.",
+    learn:"Good audio combines dialogue, music and sound effects while keeping levels balanced.",
+    example:"Lower background music when someone is speaking.",
+    practice:"Create a short edit with music and three sound effects."
+  },
+
+  {
+    level:"Beginner",
+    title:"Text & Titles",
+    description:"Create titles and subtitles.",
+    learn:"Text can communicate information, titles and subtitles while supporting the visual story.",
+    example:"Use a short title at the beginning of a video.",
+    practice:"Create an intro title and subtitles for a 15-second clip."
+  },
+
+  {
+    level:"Beginner",
+    title:"Export Settings",
+    description:"Learn codec, FPS, resolution and audio.",
+    learn:"Export settings determine the quality and file characteristics of your final video.",
+    example:"A 1080p project can usually be exported at 1920×1080.",
+    practice:"Export your practice project and check its resolution and frame rate."
+  },
+
+
+  {
+    level:"Intermediate",
+    title:"Keyframes",
+    description:"Animate position, scale, rotation and opacity.",
+    learn:"Keyframes tell the editor that a property should have a particular value at a particular time.",
+    example:"Set scale to 100% at the beginning and 120% later to create a zoom.",
+    practice:"Create a smooth two-second zoom using two keyframes."
+  },
+
+  {
+    level:"Intermediate",
+    title:"Graph Editor",
+    description:"Create smooth animation curves.",
+    learn:"Graph editors allow you to control how quickly an animation changes between keyframes.",
+    example:"Ease-in and ease-out can make movement feel less mechanical.",
+    practice:"Animate an object and experiment with different easing curves."
+  },
+
+  {
+    level:"Intermediate",
+    title:"Velocity",
+    description:"Create smooth speed ramps.",
+    learn:"Velocity controls how quickly footage plays over time.",
+    example:"A clip can start normally, speed up during an action and slow down afterward.",
+    practice:"Create a simple speed ramp on an action clip."
