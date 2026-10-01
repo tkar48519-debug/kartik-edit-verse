@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KARTIK — Video Editing Course</title>
+<style>
+:root{--bg:#09090d;--card:#111119;--card2:#151520;--text:#f5f3fb;--muted:#96939f;--line:#292733;--purple:#8b5cf6;--purple2:#a78bfa;--green:#42d392}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+button,input{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:rgba(9,9,13,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}.logo{font-weight:900;letter-spacing:6px;font-size:25px}.menu{display:flex;gap:22px;align-items:center}.menu a{color:#c8c5cf;text-decoration:none}.menu a:hover{color:white}.hamb{display:none;background:none;border:0;color:white;font-size:28px}
+.hero{max-width:1180px;margin:auto;padding:80px 24px 55px}.eyebrow{color:var(--purple2);font-weight:800;letter-spacing:4px;font-size:13px}.hero h1{font-size:clamp(48px,8vw,88px);line-height:.98;margin:16px 0 25px;letter-spacing:-4px;max-width:850px}.grad{color:var(--purple2)}.hero p{max-width:720px;color:var(--muted);font-size:19px}.actions{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--card);color:white;padding:13px 20px;border-radius:12px;font-weight:800}.btn.primary{background:var(--purple);border-color:var(--purple)}.btn:hover{transform:translateY(-1px)}
+.container{max-width:1180px;margin:auto;padding:20px 24px 80px}.section{padding:55px 0}.section h2{font-size:48px;line-height:1.05;margin:8px 0 15px;letter-spacing:-2px}.section p.lead{color:var(--muted);max-width:700px}
+.levels{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.level{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;transition:.2s}.level:hover{border-color:#5d477e;transform:translateY(-3px)}.num{color:var(--purple2);font-size:28px;font-weight:900}.level h3{font-size:27px;margin:12px 0 5px}.level p{color:var(--muted);margin:0 0 18px}.progress{height:6px;background:#24232c;border-radius:9px;overflow:hidden}.progress span{display:block;height:100%;background:var(--purple);width:0}.small{font-size:13px;color:var(--muted);margin-top:9px}
+.search{width:100%;background:var(--card);border:1px solid var(--line);color:white;padding:15px 17px;border-radius:12px;outline:none;margin:20px 0}.search:focus{border-color:var(--purple)}
+.course-list{display:grid;gap:14px}.lesson{display:grid;grid-template-columns:70px 1fr auto;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:17px;padding:18px}.lesson-num{width:48px;height:48px;border-radius:12px;background:#241744;color:var(--purple2);display:grid;place-items:center;font-weight:900}.lesson h4{margin:0 0 4px;font-size:19px}.lesson p{margin:0;color:var(--muted);font-size:14px}.done{color:var(--green);font-size:13px;font-weight:800}.level-tag{font-size:12px;color:var(--purple2);font-weight:800;letter-spacing:1px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:50;display:none;overflow:auto;padding:35px 18px}.modal.show{display:block}.modal-box{max-width:850px;margin:auto;background:#0f0f17;border:1px solid #363343;border-radius:22px;padding:30px}.close{float:right;border:0;background:#211f29;color:white;border-radius:10px;padding:8px 12px}.lesson-body h2{font-size:38px;line-height:1.1}.lesson-body h3{margin-top:28px;color:var(--purple2)}.lesson-body p,.lesson-body li{color:#c4c1cb}.lesson-body code{background:#1a1822;padding:2px 6px;border-radius:5px}.tip{border-left:3px solid var(--purple);background:#15121f;padding:15px 17px;border-radius:0 10px 10px 0;margin:20px 0}.check{display:flex;gap:10px;align-items:center;margin:25px 0}.check input{width:19px;height:19px;accent-color:var(--purple)}
+footer{border-top:1px solid var(--line);padding:35px 24px;color:var(--muted);text-align:center}
+@media(max-width:720px){.nav{height:68px}.menu{display:none}.hamb{display:block}.levels{grid-template-columns:1fr}.hero{padding-top:55px}.hero h1{letter-spacing:-2px}.section h2{font-size:38px}.lesson{grid-template-columns:52px 1fr}.lesson .btn{grid-column:2;width:max-content}.modal-box{padding:22px}.logo{font-size:20px}}
+
+.software-lab{margin-top:20px}
+.software-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.tab-btn{border:1px solid var(--line);background:var(--card);color:#ddd;padding:11px 16px;border-radius:12px;font-weight:800}
+.tab-btn.active{background:#241744;border-color:#6843a8;color:#c9b5ff}
+.lab-panel{display:none}.lab-panel.active{display:block}
+.tutorial-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.tutorial-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.tutorial-card h3{margin:0 0 8px;font-size:24px}.tutorial-card p{color:var(--muted)}
+.steps{counter-reset:step;display:grid;gap:12px;margin-top:15px}
+.step{counter-increment:step;display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start}
+.step:before{content:counter(step);width:34px;height:34px;border-radius:10px;background:#241744;color:var(--purple2);display:grid;place-items:center;font-weight:900}
+.step strong{display:block;margin-bottom:2px}.step span{color:#aaa7b2;font-size:14px}
+.visual{margin:18px 0;border:1px solid #302d3b;background:#0b0b11;border-radius:16px;padding:14px;overflow:hidden}
+.visual svg{display:block;width:100%;height:auto}
+.video-wrap{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#050507;margin-top:18px}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.source-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.source-row a{color:#c9b5ff;text-decoration:none;border:1px solid #383245;border-radius:10px;padding:8px 11px;font-size:13px}
+.tip2{background:#15121f;border:1px solid #302441;border-radius:14px;padding:14px;margin-top:16px;color:#c7c3ce}
+details{background:#0d0d13;border:1px solid #292733;border-radius:12px;padding:13px 15px;margin-top:10px}
+summary{cursor:pointer;font-weight:800}
+@media(max-width:720px){.tutorial-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header><nav class="nav">
+<div class="logo">KARTIK</div>
+<div class="menu"><a href="#home">Home</a><a href="#levels">Levels</a><a href="#course">Course</a><a href="#software">Software</a><a href="#progress">Progress</a></div>
+<button class="hamb" onclick="alert('Use the sections below: Levels, Course and Progress.')">☰</button>
+</nav></header>
+
+<main id="home">
+<section class="hero">
+<div class="eyebrow">VIDEO EDITING COURSE</div>
+<h1>Learn Editing.<br><span class="grad">Create Anything.</span></h1>
+<p>A complete beginner-to-professional roadmap covering cutting, audio, text, keyframes, masking, VFX, colour, motion graphics, storytelling and client workflow.</p>
+<div class="actions"><button class="btn primary" onclick="document.querySelector('#course').scrollIntoView()">Start Learning</button><button class="btn" onclick="document.querySelector('#levels').scrollIntoView()">Explore Levels</button></div>
+</section>
+
+<div class="container">
+<section class="section" id="levels">
+<div class="eyebrow">ROADMAP</div><h2>Choose Your Level</h2><p class="lead">Start from zero and move forward lesson by lesson. Your completed lessons are saved in this browser.</p>
+<div class="levels" id="levelCards"></div>
+</section>
+
+<section class="section" id="course">
+<div class="eyebrow">LESSONS</div><h2>Complete Course</h2><p class="lead">Open any lesson to read the explanation, steps and practice task.</p>
+<input id="search" class="search" placeholder="Search lessons: keyframes, masking, audio, export..." oninput="renderLessons()">
+<div class="course-list" id="lessonList"></div>
+</section>
+
+
+<section class="section software-lab" id="software">
+<div class="eyebrow">SOFTWARE LAB</div>
+<h2>CapCut & Alight Motion</h2>
+<p class="lead">Ab course mein sirf theory nahi—software ke andar actual workflow bhi hai. Neeche detailed step-by-step lessons aur video tutorials diye gaye hain.</p>
+
+<div class="software-tabs">
+<button class="tab-btn active" onclick="showLab('capcut',this)">CapCut</button>
+<button class="tab-btn" onclick="showLab('alight',this)">Alight Motion</button>
+</div>
+
+<div class="lab-panel active" id="capcut">
+<div class="tutorial-grid">
+
+<article class="tutorial-card">
+<h3>01 — CapCut: First Project</h3>
+<p>Mobile aur desktop versions ke menu names thode different ho sakte hain, lekin basic workflow same idea follow karta hai.</p>
+<div class="steps">
+<div class="step"><div><strong>Create a project</strong><span>CapCut open karo → New/Create Project select karo.</span></div></div>
+<div class="step"><div><strong>Import media</strong><span>Apne video, image aur audio files import karo.</span></div></div>
+<div class="step"><div><strong>Timeline</strong><span>Media ko timeline par drag/add karo. Playhead se exact moment choose karo.</span></div></div>
+<div class="step"><div><strong>Save versions</strong><span>Major changes se pehle project ka version save karna useful hai.</span></div></div>
+</div>
+<div class="visual">
+<svg viewBox="0 0 720 250" role="img" aria-label="Illustration of a CapCut editing timeline">
+<rect width="720" height="250" rx="18" fill="#0d0d14"/>
+<rect x="25" y="25" width="150" height="80" rx="12" fill="#191722"/><text x="45" y="70" fill="#a78bfa" font-size="22" font-weight="700">MEDIA</text><text x="45" y="92" fill="#8e8b96" font-size="13">Import clips</text>
+<rect x="195" y="25" width="500" height="80" rx="12" fill="#15151e"/><text x="215" y="58" fill="#f5f3fb" font-size="16">PREVIEW</text><circle cx="445" cy="70" r="25" fill="#241744"/><polygon points="439,57 439,83 460,70" fill="#c4b5fd"/>
+<text x="25" y="140" fill="#a78bfa" font-size="15" font-weight="700">TIMELINE</text>
+<rect x="25" y="155" width="250" height="38" rx="8" fill="#3b2661"/><text x="40" y="180" fill="#eee" font-size="14">CLIP 01</text>
+<rect x="285" y="155" width="180" height="38" rx="8" fill="#55358b"/><text x="300" y="180" fill="#eee" font-size="14">CLIP 02</text>
+<rect x="475" y="155" width="220" height="38" rx="8" fill="#2d2540"/><text x="490" y="180" fill="#eee" font-size="14">AUDIO / MUSIC</text>
+<line x1="280" y1="135" x2="280" y2="215" stroke="#a78bfa" stroke-width="3"/><text x="252" y="232" fill="#a78bfa" font-size="12">PLAYHEAD</text>
+</svg>
+</div>
+<div class="tip2">Practice: 3 clips import karo, timeline par arrange karo aur ek 20–30 second sequence banao.</div>
+</article>
+
+<article class="tutorial-card">
+<h3>02 — CapCut: Cut, Trim & Transition</h3>
+<p>Clean editing ka base: unwanted moments remove karo, clips ko precise timing do, phir zarurat par transition lagao.</p>
+<div class="steps">
+<div class="step"><div><strong>Split</strong><span>Playhead ko cut point par rakho → Split/Cut use karo.</span></div></div>
+<div class="step"><div><strong>Trim</strong><span>Clip ke beginning/end ko drag karke timing tight karo.</span></div></div>
+<div class="step"><div><strong>Delete</strong><span>Unwanted section remove karo aur gap check karo.</span></div></div>
+<div class="step"><div><strong>Transition</strong><span>Do clips ko side-by-side rakho → transition control choose karo → duration adjust karo.</span></div></div>
+</div>
+<details><summary>Mobile transition quick steps</summary><p>Do clips ko timeline mein adjacent rakho → unke beech transition icon tap karo → transition select karo → duration set karo → preview.</p></details>
+<div class="source-row"><a href="https://www.capcut.com/help/transitions-in-capcut" target="_blank" rel="noopener">Official CapCut transition guide ↗</a></div>
+</article>
+
+<article class="tutorial-card">
+<h3>03 — CapCut: Keyframes & Smooth Zoom</h3>
+<p>Keyframes se position, scale, rotation ya opacity ko time ke saath animate kar sakte ho.</p>
+<div class="steps">
+<div class="step"><div><strong>Select the clip</strong><span>Timeline mein clip select karo aur transform controls kholo.</span></div></div>
+<div class="step"><div><strong>First keyframe</strong><span>Starting point par diamond/keyframe control press karo.</span></div></div>
+<div class="step"><div><strong>Move the playhead</strong><span>1–2 seconds aage jao aur scale/position change karo.</span></div></div>
+<div class="step"><div><strong>Refine</strong><span>Extra keyframes aur easing/speed controls se movement smooth karo.</span></div></div>
+</div>
+<div class="visual">
+<svg viewBox="0 0 720 220" role="img" aria-label="Keyframe animation diagram">
+<rect width="720" height="220" rx="18" fill="#0d0d14"/>
+<text x="25" y="35" fill="#a78bfa" font-size="15" font-weight="700">SCALE</text>
+<line x1="55" y1="115" x2="665" y2="115" stroke="#383343" stroke-width="4"/>
+<polygon points="170,101 184,115 170,129 156,115" fill="#a78bfa"/>
+<polygon points="550,101 564,115 550,129 536,115" fill="#a78bfa"/>
+<path d="M170 115 C290 112, 380 85, 550 115" fill="none" stroke="#8b5cf6" stroke-width="4"/>
+<text x="135" y="165" fill="#aaa7b2" font-size="13">100% — start</text>
+<text x="505" y="165" fill="#aaa7b2" font-size="13">115% — end</text>
+<text x="300" y="55" fill="#f5f3fb" font-size="18" font-weight="700">KEYFRAME → CHANGE → SMOOTH MOTION</text>
+</svg>
+</div>
+<div class="tip2">Practice: 2-second slow zoom banao: 100% → 115%. Movement ko subtle rakho.</div>
+<div class="source-row"><a href="https://www.capcut.com/resource/how-to-add-keyframes-in-capcut" target="_blank" rel="noopener">Official CapCut keyframe guide ↗</a></div>
+</article>
+
+<article class="tutorial-card">
+<h3>04 — CapCut: Auto Captions, Audio & Export</h3>
+<p>Speech ko captions mein convert karo, audio balance karo aur final file export karo.</p>
+<div class="steps">
+<div class="step"><div><strong>Auto captions</strong><span>Captions → Auto Captions choose karo, language select karo aur generate karo.</span></div></div>
+<div class="step"><div><strong>Fix captions</strong><span>Names, spelling aur timing manually check karo.</span></div></div>
+<div class="step"><div><strong>Audio mix</strong><span>Voice ko clear rakho; music ko itna loud mat karo ki speech cover ho jaye.</span></div></div>
+<div class="step"><div><strong>Export</strong><span>Resolution, frame rate aur format destination ke hisaab se choose karo, phir export karke file ko watch-check karo.</span></div></div>
+</div>
+<div class="video-wrap"><iframe src="https://www.youtube.com/embed/j5_471mO14c" title="CapCut beginner tutorial" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="source-row"><a href="https://www.capcut.com/resource/capcut-tutorial-for-beginners" target="_blank" rel="noopener">Official CapCut beginner guide ↗</a></div>
+</article>
+
+</div>
+</div>
+
+<div class="lab-panel" id="alight">
+<div class="tutorial-grid">
+
+<article class="tutorial-card">
+<h3>01 — Alight Motion: Project & Layers</h3>
+<p>Alight Motion mobile/tablet-focused motion design workflow use karta hai, with multiple graphics, video and audio layers.</p>
+<div class="steps">
+<div class="step"><div><strong>Create a project</strong><span>New project banao aur apna aspect ratio, resolution aur frame rate choose karo.</span></div></div>
+<div class="step"><div><strong>Add layers</strong><span>Video, image, text, shape ya audio layers add karo.</span></div></div>
+<div class="step"><div><strong>Adjust layers</strong><span>Position, scale, rotation aur timing set karo.</span></div></div>
+<div class="step"><div><strong>Organize</strong><span>Layers ko meaningful names/groups do so complex projects manageable rahen.</span></div></div>
+</div>
+<div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/JUDdyfYWweE" title="Alight Motion getting started" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="tip2">Video embed official quick-start series ka reference hai. App versions/device ke hisaab se menu placement change ho sakta hai.</div>
+<div class="source-row"><a href="https://support.alightmotion.com/hc/en-us/articles/10536777320337-Alight-Motion-Quick-Start-Guide" target="_blank" rel="noopener">Official Alight Motion Quick Start ↗</a></div>
+</article>
+
+<article class="tutorial-card">
+<h3>02 — Alight Motion: Keyframes & Easing</h3>
+<p>Keyframes se animation create karo, phir easing se movement ko natural feel do.</p>
+<div class="steps">
+<div class="step"><div><strong>Choose a property</strong><span>Position, scale, rotation, opacity ya supported property select karo.</span></div></div>
+<div class="step"><div><strong>Set keyframe 1</strong><span>Starting time par first keyframe add karo.</span></div></div>
+<div class="step"><div><strong>Set keyframe 2</strong><span>Playhead aage le jao aur property ki value change karo.</span></div></div>
+<div class="step"><div><strong>Apply easing</strong><span>Ease-in, ease-out ya ease-in-out choose karke timing smooth karo.</span></div></div>
+</div>
+<div class="visual">
+<svg viewBox="0 0 720 220" role="img" aria-label="Easing curve diagram">
+<rect width="720" height="220" rx="18" fill="#0d0d14"/>
+<line x1="80" y1="175" x2="650" y2="175" stroke="#383343" stroke-width="2"/>
+<line x1="80" y1="175" x2="80" y2="45" stroke="#383343" stroke-width="2"/>
+<path d="M90 165 C110 160, 150 90, 620 55" fill="none" stroke="#8b5cf6" stroke-width="5"/>
+<circle cx="90" cy="165" r="7" fill="#a78bfa"/><circle cx="620" cy="55" r="7" fill="#a78bfa"/>
+<text x="105" y="195" fill="#aaa7b2" font-size="13">Start</text><text x="590" y="45" fill="#aaa7b2" font-size="13">End</text>
+<text x="245" y="35" fill="#f5f3fb" font-size="18" font-weight="700">EASING = CONTROLLED TIMING</text>
+</svg>
+</div>
+<div class="source-row"><a href="https://support.alightmotion.com/hc/en-us/articles/10536934703889-Animation-Easing-Curves" target="_blank" rel="noopener">Official easing guide ↗</a></div>
+</article>
+
+<article class="tutorial-card">
+<h3>03 — Alight Motion: Masking</h3>
+<p>Masking se layer ke specific area ko reveal/hide karke creative transitions aur composites bana sakte ho.</p>
+<div class="steps">
+<div class="step"><div><strong>Prepare layers</strong><span>Jis layer ko reveal/hide karna hai aur mask layer ko ready karo.</span></div></div>
+<div class="step"><div><strong>Create masking group</strong><span>Relevant layers select karke masking/group controls use karo. Exact menu version ke saath change ho sakta hai.</span></div></div>
+<div class="step"><div><strong>Animate the mask</strong><span>Mask position/shape ko keyframes ke through move kara sakte ho.</span></div></div>
+<div class="step"><div><strong>Preview & refine</strong><span>Edges check karo aur keyframes ko adjust karo so reveal smooth lage.</span></div></div>
+</div>
+<div class="video-wrap"><iframe src="https://www.youtube.com/embed/ZRUjWq1jOUA" title="Alight Motion official masking tutorial" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="source-row"><a href="https://support.alightmotion.com/hc/en-us/articles/10536991943569-Effects-Guide" target="_blank" rel="noopener">Official Alight Motion effects guide ↗</a></div>
+</article>
+
+<article class="tutorial-card">
+<h3>04 — Alight Motion: Effects, Motion Blur & Camera</h3>
+<p>Effects ko layer stack ke saath combine karo; advanced projects mein camera objects aur motion effects bhi use kiye ja sakte hain.</p>
+<div class="steps">
+<div class="step"><div><strong>Add an effect</strong><span>Layer select karo → Effects se required effect choose karo.</span></div></div>
+<div class="step"><div><strong>Adjust parameters</strong><span>Effect controls ko small changes se tune karo; overuse avoid karo.</span></div></div>
+<div class="step"><div><strong>Use keyframes</strong><span>Supported effect parameters ko time ke saath animate karo.</span></div></div>
+<div class="step"><div><strong>Camera objects</strong><span>Complex scenes mein camera object se position, rotation aur depth-style movement control kiya ja sakta hai.</span></div></div>
+</div>
+<div class="source-row">
+<a href="https://support.alightmotion.com/hc/en-us/categories/10536777021713" target="_blank" rel="noopener">Official feature & effects guides ↗</a>
+<a href="https://support.alightmotion.com/hc/en-us/articles/10536993608977-Camera-Objects-Guide" target="_blank" rel="noopener">Camera Objects guide ↗</a>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section class="section" id="progress">
+<div class="eyebrow">YOUR PROGRESS</div><h2>Keep Creating.</h2><p class="lead" id="progressText"></p>
+<div class="progress" style="margin-top:20px"><span id="overallBar"></span></div>
+</section>
+</div>
+</main>
+
+<div class="modal" id="modal"><div class="modal-box">
+<button class="close" onclick="closeLesson()">✕</button>
+<div class="lesson-body" id="lessonBody"></div>
+</div></div>
+
+<footer>KARTIK • Learn → Practice → Create</footer>
+
+<script>
+const lessons=[
+{level:"Beginner",title:"Editing Basics & Timeline",desc:"Understand projects, media, timeline, playhead and tracks.",body:`<h2>Editing Basics & Timeline</h2><p>Video editing means arranging clips, audio, text and effects into a finished story.</p><h3>Core ideas</h3><ul><li><b>Project:</b> your complete editing file.</li><li><b>Media:</b> videos, images and audio you import.</li><li><b>Timeline:</b> where you arrange everything.</li><li><b>Playhead:</b> shows the exact moment you are viewing.</li><li><b>Track:</b> a layer containing video or audio.</li></ul><div class="tip">Practice: import three short clips and arrange them in a simple beginning → middle → ending sequence.</div>`},
+{level:"Beginner",title:"Cutting & Splitting",desc:"Remove unwanted parts and make clean cuts.",body:`<h2>Cutting & Splitting</h2><p>A cut separates a clip into sections so you can remove or rearrange parts.</p><h3>Workflow</h3><ol><li>Put the clip on the timeline.</li><li>Move the playhead to the cut point.</li><li>Use Split/Cut.</li><li>Select the unwanted section.</li><li>Delete it and close the gap.</li></ol><div class="tip">Practice: turn a 30-second clip into three clean sections without leaving accidental gaps.</div>`},
+{level:"Beginner",title:"Trimming & Pacing",desc:"Make clips start and end at the right moments.",body:`<h2>Trimming & Pacing</h2><p>Trimming changes the visible start or end of a clip without needing a new recording.</p><h3>Good pacing</h3><p>Remove dead time, repeated actions and moments that do not help the story. Keep enough context so cuts do not feel confusing.</p><div class="tip">Practice: edit a 60-second clip down to about 30–40 seconds while keeping the important information.</div>`},
+{level:"Beginner",title:"FPS & Resolution",desc:"Understand frame rate, aspect ratio and resolution.",body:`<h2>FPS & Resolution</h2><p><b>FPS</b> means frames per second. Common projects use 24, 30 or 60 FPS.</p><p><b>Resolution</b> describes the pixel dimensions, such as 1920×1080.</p><p>For vertical short-form video, a 9:16 canvas is commonly used; for landscape video, 16:9 is common.</p><div class="tip">Practice: create one vertical project and one landscape project, then compare how the same clip fits.</div>`},
+{level:"Beginner",title:"Audio Basics",desc:"Balance voice, music and sound effects.",body:`<h2>Audio Basics</h2><p>Good audio can make a simple edit feel much more professional.</p><h3>Basic workflow</h3><ol><li>Keep speech clear.</li><li>Lower background music when speech starts.</li><li>Cut obvious unwanted noise.</li><li>Use sound effects only when they support the edit.</li></ol><div class="tip">Practice: put music under a voice clip and adjust the music so every spoken word remains easy to understand.</div>`},
+{level:"Beginner",title:"Text & Captions",desc:"Create readable titles, subtitles and captions.",body:`<h2>Text & Captions</h2><p>Use simple fonts, strong contrast and enough screen time for viewers to read.</p><h3>Rules</h3><ul><li>Keep important text away from screen edges.</li><li>Use consistent font sizes.</li><li>Do not fill the screen with unnecessary words.</li><li>Check spelling before export.</li></ul><div class="tip">Practice: create a title, a lower-third name tag and three short captions.</div>`},
+{level:"Beginner",title:"Transitions",desc:"Use cuts and transitions without overusing them.",body:`<h2>Transitions</h2><p>A normal cut is often the cleanest transition. Effects such as fades, wipes or zoom transitions should have a reason.</p><div class="tip">Practice: make a 20-second edit using mostly cuts and only two intentional transitions.</div>`},
+{level:"Beginner",title:"Basic Effects & Export",desc:"Add simple effects and export a finished video.",body:`<h2>Basic Effects & Export</h2><p>Use effects carefully. After finishing, watch the whole timeline once before exporting.</p><h3>Export checklist</h3><ul><li>Correct resolution and aspect ratio</li><li>Correct frame rate</li><li>Audio enabled</li><li>No accidental black frames</li><li>Watch the exported file once</li></ul><div class="tip">Beginner project: create a 30–45 second edit using cuts, text, music and one transition.</div>`},
+
+{level:"Intermediate",title:"Keyframes",desc:"Animate position, scale, rotation and opacity.",body:`<h2>Keyframes</h2><p>Keyframes tell the editor that a property should have a certain value at a certain time. The software calculates the movement between them.</p><h3>Example</h3><p>Set scale to 100% at the start and 115% two seconds later to create a slow zoom.</p><div class="tip">Practice: animate a clip with a gentle zoom and a second clip with a left-to-right movement.</div>`},
+{level:"Intermediate",title:"Velocity & Speed Ramping",desc:"Control motion and create smooth speed changes.",body:`<h2>Velocity & Speed Ramping</h2><p>Speed changes can emphasize an action, but sudden changes can look rough.</p><h3>Workflow</h3><ol><li>Choose an action with clear movement.</li><li>Mark the important moments.</li><li>Increase or decrease speed around those moments.</li><li>Use smooth curves when your editor provides them.</li></ol><div class="tip">Practice: make a short speed-ramp edit while keeping the subject readable.</div>`},
+{level:"Intermediate",title:"Masking",desc:"Hide, reveal or isolate parts of an image.",body:`<h2>Masking</h2><p>A mask controls which part of a layer is visible. Masks can be simple shapes or custom paths.</p><h3>Common uses</h3><ul><li>Reveal text behind an object</li><li>Isolate a subject</li><li>Create transitions</li><li>Apply an effect to only part of a frame</li></ul><div class="tip">Practice: place text behind a moving object using a mask and keyframes.</div>`},
+{level:"Intermediate",title:"Colour Correction",desc:"Fix exposure, white balance and contrast.",body:`<h2>Colour Correction</h2><p>Correction aims to make footage look natural and consistent before creative grading.</p><ul><li>Fix exposure first.</li><li>Correct white balance.</li><li>Adjust contrast carefully.</li><li>Match shots that should look like they belong together.</li></ul><div class="tip">Practice: take two clips with different brightness and make them visually consistent.</div>`},
+{level:"Intermediate",title:"Sound Design",desc:"Use effects, ambience and timing to improve impact.",body:`<h2>Sound Design</h2><p>Sound effects can make edits feel connected to the action. Timing matters more than simply adding lots of sounds.</p><div class="tip">Practice: add three intentional sound effects to a 15-second sequence and align each one precisely with an action.</div>`},
+{level:"Intermediate",title:"Motion Text",desc:"Animate titles with position, scale and opacity.",body:`<h2>Motion Text</h2><p>Combine typography with simple keyframes to make titles feel alive.</p><h3>Starter recipe</h3><p>Animate opacity from 0 to 100, add a small upward movement, then hold the title long enough to read.</p><div class="tip">Practice: create a 3-second animated title with an entrance and exit.</div>`},
+{level:"Intermediate",title:"Short-Form Editing Workflow",desc:"Build a fast workflow for Reels, Shorts and TikTok-style videos.",body:`<h2>Short-Form Editing Workflow</h2><ol><li>Choose the strongest opening moment.</li><li>Remove pauses.</li><li>Use readable captions.</li><li>Change visual information when attention needs help.</li><li>Keep audio clear.</li><li>Review the first 3 seconds carefully.</li></ol><div class="tip">Practice: make a 30-second vertical edit from raw footage and export it.</div>`},
+{level:"Intermediate",title:"Intermediate Project",desc:"Combine cutting, keyframes, masking, colour and sound.",body:`<h2>Intermediate Project</h2><p>Create a 45–60 second edit that includes clean cuts, at least two keyframe animations, one mask, basic colour correction and intentional sound design.</p><div class="tip">Goal: every effect should support the story rather than exist only to show an effect.</div>`},
+
+{level:"Advanced",title:"Tracking",desc:"Attach graphics or effects to moving subjects.",body:`<h2>Tracking</h2><p>Tracking analyzes movement so another element can follow it.</p><h3>Workflow</h3><ol><li>Choose a high-contrast feature.</li><li>Run the tracker.</li><li>Check the tracking result frame by frame.</li><li>Attach the graphic/effect.</li><li>Correct drift manually when needed.</li></ol><div class="tip">Practice: track a sign or moving object and attach a small label to it.</div>`},
+{level:"Advanced",title:"Compositing",desc:"Combine multiple layers into one believable shot.",body:`<h2>Compositing</h2><p>Compositing combines footage, graphics, masks, effects and backgrounds while keeping edges, lighting and perspective believable.</p><div class="tip">Practice: create a simple two-layer composite and match scale, position and colour.</div>`},
+{level:"Advanced",title:"VFX Fundamentals",desc:"Learn the building blocks behind visual effects.",body:`<h2>VFX Fundamentals</h2><p>VFX often combines masking, tracking, compositing, keying, colour and sound.</p><p>Start with simple effects before attempting complex simulations.</p><div class="tip">Practice: create a simple glow or energy-style effect using layers, masks and blur.</div>`},
+{level:"Advanced",title:"Advanced Colour Grading",desc:"Use creative colour to establish mood and consistency.",body:`<h2>Advanced Colour Grading</h2><p>After correction, grading can shape mood and visual identity.</p><ul><li>Keep skin and important subjects believable.</li><li>Use contrast intentionally.</li><li>Control saturation instead of maxing it out.</li><li>Match shots before applying a creative look.</li></ul><div class="tip">Practice: make the same scene feel warm and energetic, then cool and serious, while keeping details visible.</div>`},
+{level:"Advanced",title:"Advanced Motion Graphics",desc:"Build polished animated graphics.",body:`<h2>Advanced Motion Graphics</h2><p>Combine typography, shapes, keyframes, easing and timing to build visual systems.</p><div class="tip">Practice: create a 5-second logo/title animation with an entrance, hold and exit.</div>`},
+{level:"Advanced",title:"Advanced Project",desc:"Create a polished cinematic edit from raw footage.",body:`<h2>Advanced Project</h2><p>Create a 60–90 second cinematic edit using tracking or compositing, colour work, motion graphics and designed sound.</p><div class="tip">Review it at least twice: once for storytelling and once for technical mistakes.</div>`},
+
+{level:"Professional",title:"Storytelling & Retention",desc:"Make edits serve a story instead of just showing effects.",body:`<h2>Storytelling & Retention</h2><p>Professional editing starts with the viewer: what should they understand, feel or want to see next?</p><ul><li>Open with a clear reason to continue.</li><li>Remove information that does not move the story forward.</li><li>Vary pacing when appropriate.</li><li>End with a satisfying result or clear next step.</li></ul><div class="tip">Practice: edit the same footage two ways—fast and calm—and compare how the story changes.</div>`},
+{level:"Professional",title:"YouTube Workflow",desc:"Plan, edit, review and publish longer-form content.",body:`<h2>YouTube Workflow</h2><ol><li>Organize footage.</li><li>Build a rough cut.</li><li>Refine pacing.</li><li>Add graphics and sound.</li><li>Colour-correct and grade.</li><li>Watch the complete export.</li></ol><div class="tip">Practice: build a 2–3 minute video with a clear intro, body and ending.</div>`},
+{level:"Professional",title:"Client Workflow",desc:"Organize projects, revisions and final delivery.",body:`<h2>Client Workflow</h2><p>Professional work requires clear organization as well as editing skill.</p><ul><li>Use clear file and folder names.</li><li>Keep project assets organized.</li><li>Save versions before major changes.</li><li>Track revision requests.</li><li>Export using the requested specifications.</li></ul><div class="tip">Practice: create folders for Footage, Audio, Graphics, Project and Exports, then make two project versions.</div>`},
+{level:"Professional",title:"Portfolio Building",desc:"Turn practice projects into proof of skill.",body:`<h2>Portfolio Building</h2><p>Choose a small number of strong projects that demonstrate different skills.</p><h3>Include</h3><ul><li>Short-form edit</li><li>Cinematic edit</li><li>Motion graphics example</li><li>Before/after colour example</li><li>One project showing storytelling</li></ul><div class="tip">Practice: create a simple portfolio page with your best 3–5 edits and a short description of what you did.</div>`},
+{level:"Professional",title:"Final Capstone Project",desc:"Plan, edit and deliver one complete professional project.",body:`<h2>Final Capstone Project</h2><p>Create a complete 2–3 minute project from raw footage. Plan the story, make a rough cut, refine pacing, design audio, add graphics, correct colour and export a final version.</p><h3>Final checklist</h3><ul><li>Story is understandable</li><li>Every cut has a reason</li><li>Audio is clear</li><li>Text is readable</li><li>Colour is consistent</li><li>No accidental frames or muted sections</li><li>Export settings match the destination</li></ul><div class="tip">Congratulations: completing this project gives you a real piece of work to improve and include in your portfolio.</div>`}
+];
+
+const levels=["Beginner","Intermediate","Advanced","Professional"];
+let completed=JSON.parse(localStorage.getItem("kartikCourseProgress")||"[]");
+
+function save(){localStorage.setItem("kartikCourseProgress",JSON.stringify(completed))}
+function renderLevels(){
+ const el=document.getElementById("levelCards");
+ el.innerHTML=levels.map((lv,i)=>{
+  const ids=lessons.map((x,n)=>x.level===lv?n:-1).filter(n=>n>=0);
+  const done=ids.filter(n=>completed.includes(n)).length;
+  const pct=Math.round(done/ids.length*100);
+  return `<article class="level"><div class="num">0${i+1}</div><h3>${lv}</h3><p>${ids.length} lessons • ${done} completed</p><div class="progress"><span style="width:${pct}%"></span></div><div class="small">${pct}% complete</div></article>`
+ }).join("");
+}
+function renderLessons(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const el=document.getElementById("lessonList");
+ const filtered=lessons.map((x,i)=>({...x,i})).filter(x=>(x.title+" "+x.desc+" "+x.level).toLowerCase().includes(q));
+ el.innerHTML=filtered.map(x=>`<article class="lesson">
+ <div class="lesson-num">${String(x.i+1).padStart(2,"0")}</div>
+ <div><div class="level-tag">${x.level.toUpperCase()}</div><h4>${x.title}</h4><p>${x.desc}</p></div>
+ <div>${completed.includes(x.i)?'<div class="done">✓ Completed</div>':''}<button class="btn" onclick="openLesson(${x.i})">${completed.includes(x.i)?"Review":"Open Lesson"}</button></div>
+ </article>`).join("");
+}
+function updateProgress(){
+ const pct=Math.round(completed.length/lessons.length*100);
+ document.getElementById("overallBar").style.width=pct+"%";
+ document.getElementById("progressText").textContent=`${completed.length} of ${lessons.length} lessons completed — ${pct}% of the course.`;
+}
+function openLesson(i){
+ const x=lessons[i];
+ document.getElementById("lessonBody").innerHTML=x.body+`
+ <div class="check"><input id="completeBox" type="checkbox" ${completed.includes(i)?"checked":""} onchange="toggleComplete(${i},this.checked)"><label for="completeBox"><b>Mark this lesson as completed</b></label></div>
+ <div class="actions"><button class="btn" onclick="prevLesson(${i})">← Previous</button><button class="btn primary" onclick="nextLesson(${i})">Next Lesson →</button></div>`;
+ document.getElementById("modal").classList.add("show");
+ document.body.style.overflow="hidden";
+}
+function closeLesson(){document.getElementById("modal").classList.remove("show");document.body.style.overflow=""}
+function toggleComplete(i,checked){
+ if(checked&&!completed.includes(i))completed.push(i);
+ if(!checked)completed=completed.filter(n=>n!==i);
+ completed.sort((a,b)=>a-b);save();
+function showLab(which,btn){
+ document.querySelectorAll(".lab-panel").forEach(p=>p.classList.remove("active"));
+ document.getElementById(which).classList.add("active");
+ document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+}
+
+renderLevels();renderLessons();updateProgress();
+}
+function prevLesson(i){if(i>0)openLesson(i-1)}
+function nextLesson(i){if(i<lessons.length-1)openLesson(i+1)}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeLesson()});
+renderLevels();renderLessons();updateProgress();
+</script>
+</body>
+</html>
