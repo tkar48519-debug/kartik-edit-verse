@@ -1,4 +1,5 @@
-* {
+*
+ {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -1012,4 +1013,165 @@ footer small {
     gap: 5px;
   }
 
+}/* ===== KAR4TIK 3D HERO ===== */
+
+.kar4tik-3d {
+    width: 100%;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(155, 70, 255, 0.45) 0%,
+            rgba(70, 15, 130, 0.28) 35%,
+            transparent 70%
+        ),
+        linear-gradient(135deg, #05000d, #16002d, #05000d);
+
+    perspective: 1200px;
+}
+
+/* 3D text container */
+.kar4tik-text {
+    position: relative;
+
+    font-family:
+        Arial Black,
+        Impact,
+        sans-serif;
+
+    font-size: clamp(55px, 13vw, 150px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-transform: lowercase;
+
+    color: #ffffff;
+
+    transform-style: preserve-3d;
+
+    cursor: grab;
+    user-select: none;
+
+    /* Metallic front */
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #dcd6e8 15%,
+        #8c62bd 38%,
+        #ffffff 52%,
+        #6b3b9d 70%,
+        #eee8ff 88%,
+        #5a287f 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(0 8px 0 #35104f)
+        drop-shadow(0 15px 20px rgba(0,0,0,.65))
+        drop-shadow(0 0 25px rgba(170,90,255,.55));
+
+    transition: filter .2s ease;
+}
+
+/* Fake deep metallic extrusion */
+.kar4tik-text::before {
+    content: "kar4tik";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: -1;
+
+    color: #43156c;
+
+    -webkit-text-fill-color: #43156c;
+
+    transform:
+        translateZ(-35px)
+        translate(10px, 16px);
+
+    text-shadow:
+        1px 1px #32104f,
+        2px 2px #32104f,
+        3px 3px #32104f,
+        4px 4px #32104f,
+        5px 5px #32104f,
+        6px 6px #32104f,
+        7px 7px #32104f,
+        8px 8px #32104f,
+        9px 9px #32104f,
+        10px 10px #32104f,
+        15px 18px 25px rgba(0,0,0,.7);
+}
+
+/* Purple light reflection */
+.kar4tik-text::after {
+    content: "";
+
+    position: absolute;
+    inset: -20% -10%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 35%,
+            rgba(255,255,255,.7) 45%,
+            rgba(210,150,255,.35) 50%,
+            transparent 58%
+        );
+
+    mix-blend-mode: screen;
+
+    animation: metallicShine 3.5s infinite;
+}
+
+@keyframes metallicShine {
+    0% {
+        transform: translateX(-80%);
+    }
+
+    45%,
+    100% {
+        transform: translateX(80%);
+    }
+}
+
+/* Soft purple glow behind text */
+.kar4tik-glow {
+    position: absolute;
+
+    width: 45%;
+    height: 35%;
+
+    background: #9b45ff;
+
+    filter: blur(90px);
+
+    opacity: .25;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .kar4tik-3d {
+        min-height: 260px;
+    }
+
+    .kar4tik-text {
+        letter-spacing: 4px;
+        font-size: clamp(42px, 14vw, 80px);
+    }
 }
